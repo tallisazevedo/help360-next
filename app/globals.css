@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 262 83.3% 57.8%; /* Roxo */
+    --primary-foreground: 210 20% 98%;
+    --secondary: 142 70.6% 45.3%; /* Verde marca-texto */
+    --secondary-foreground: 220 41.2% 11.0%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 262 83.3% 97.8%; /* Roxo claro */
+    --accent-foreground: 220 41.2% 11.0%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 262 83.3% 57.8%;
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 224 71.4% 4.1%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-primary: 262 83.3% 57.8%;
+    --sidebar-accent: 220 14.3% 95.9%;
+    --sidebar-accent-foreground: 220 41.2% 11.0%;
+    --sidebar-ring: 262 83.3% 57.8%;
+
+    --chart-1: 262 83.3% 57.8%; /* Roxo */
+    --chart-2: 142 70.6% 45.3%; /* Verde */
+    --chart-3: 346.8 77.2% 49.8%; /* Vermelho */
+    --chart-4: 43.3 96.4% 56.3%; /* Amarelo */
+    --chart-5: 199 89% 48%; /* Azul */
+    --chart-6: 24.6 95% 53.1%; /* Laranja */
+  }
+
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 263 85% 65%; /* Roxo mais claro para dark mode */
+    --primary-foreground: 210 20% 98%;
+    --secondary: 142 70.6% 45.3%; /* Verde marca-texto */
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 263 85% 25%; /* Roxo escuro */
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 263 85% 65%;
+
+    --sidebar-background: 224 71.4% 4.1%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-border: 215 27.9% 16.9%;
+    --sidebar-primary: 263 85% 65%;
+    --sidebar-accent: 215 27.9% 16.9%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-ring: 263 85% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Estilos inspirados na Apple */
+.glass-card {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px 0 rgba(31, 38, 135, 0.08);
+}
+
+.dark .glass-card {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+}
+
+.gradient-bg {
+  @apply bg-gradient-to-r from-primary/90 to-primary;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: var(--radius);
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 1px;
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Animações */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-delay-1 {
+  animation-delay: 1s;
+}
+
+.float-delay-2 {
+  animation-delay: 2s;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.pulse {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Efeito de scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animações de gamificação */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px 2px rgba(var(--primary-rgb), 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px 5px rgba(var(--primary-rgb), 0.6);
+  }
+}
+
+.animate-glow {
+  --primary-rgb: 147, 51, 234;
+  animation: glow 2s ease-in-out infinite;
+}
+
+.dark .animate-glow {
+  --primary-rgb: 192, 132, 252;
+}
+
+/* Estilos para badges de gamificação */
+.achievement-badge {
+  @apply relative inline-flex items-center justify-center rounded-full bg-primary/10 p-1 transition-all hover:scale-110;
+}
+
+.achievement-badge::after {
+  content: "";
+  @apply absolute -inset-0.5 rounded-full bg-primary/20 opacity-0 transition-opacity;
+}
+
+.achievement-badge:hover::after {
+  @apply opacity-100;
+}
+
+.achievement-badge.unlocked {
+  @apply bg-primary/20;
+}
+
+.achievement-badge.locked {
+  @apply bg-muted/50 grayscale;
+}
