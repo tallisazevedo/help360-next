@@ -1,32 +1,31 @@
 # Help360 Next
 
-This repository contains a Next.js project used as a starting point for Help360 applications.
+## Gerenciador de pacotes
 
-## Installation
+Utilizamos **Yarn** para instalar dependências e executar os scripts do projeto.
 
-Install the project dependencies with your preferred package manager:
+### Instalação das dependências
 
 ```bash
-npm install
-# or
 yarn install
 ```
 
-## Running the development server
+### Ambiente de desenvolvimento
 
-Start the Next.js development server with:
+Para iniciar o ambiente de desenvolvimento, execute:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
-The server will be available at `http://localhost:3000`.
+### Build de produção
 
-## Environment variables and prerequisites
+Para gerar a build de produção, utilize:
 
-- **Node.js**: version 18 or later is recommended.
-- **Package manager**: either npm or Yarn.
-- This project does not require additional environment variables by default. Create a `.env` file if you need to customize settings for your environment.
+```bash
+yarn build
+```
 
+## Estrutura do projeto
+
+O código está organizado na pasta `app` e nos componentes em `components`. As configurações do Tailwind estão em `tailwind.config.js`.
